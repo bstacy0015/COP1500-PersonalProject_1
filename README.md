@@ -1,4 +1,3 @@
-**Currently unfinished.**
 # COP1500-PersonalProject_1
 The first personal project for my COP 1500 class.
 I intend to do the "Data Analysis with Python" project.
@@ -9,20 +8,34 @@ I intend to do the "Data Analysis with Python" project.
 - Gain extra proficiency with mathematics, for my major.
 
 ### Boundaries / Scope
-- (where the functions and responsibilities of the solution start and end / what it should do and what is left to other systems to do)
-- 
+- Complete Course 6 of 9 in the [IBM Data Science Specialization](https://www.coursera.org/specializations/ibm-data-science): "Data Analysis with Python"
 
 ### Success criteria
-- (set of conditions to be satisfied at completion; must be measurable and verifiable, like a test)  
+- Pass the course by completing all graded assignments in the course with a passing grade.
+- Create a program that can analyze data, retrieved either through manual or automatic means. 
 
 ### Constraints
-- (externally imposed limitations on system requirements, design, or implementation or on the process used to develop or modify a system)  
+- I will be auditing the course for free so will be able to read and view the course content but not submit projects or earn the certification.
 
 ### Assumptions
-- (things that are accepted as true or as certain to happen, without proof)  
+- The courses will be available for the duration of the semester.
+-   I have all required software.
+-   I should do all modules, once per week.
 
 ### Stakeholders
-- (individuals or organizations having a right, share, claim, or interest in a system or in its possession of characteristics that meet their needs and expectations)
+- Professor -  to get a good grade for the project
+- Parents - they can see my prowess in computer science
+- Perspective Employers - this project will be one of many in my portfolio
 
 ### Timelines
-- (for software, a breakdown of high level goals like from the Product Backlog into time-bound smaller, more detailed tasks, like in Sprint Backlogs)
+| Week |         Objective(s)        |  Time  |
+|:----:|:---------------------------:|:------:|
+|   1  | Importing Datasets          | 2h 15m |
+|   2  | Data Wrangling              | 2h 18m |
+|   3  | Exploratory Data Analysis   | 2h 18m |
+|   4  | Model Development           | 2h 27m |
+|   5  | Model Evaluation            | 2h 23m |
+|   6  | Final Assignment (1)        | 2h 10m |
+|   7  | Final Assignment (2)        | 2h 5m  |
+|   8  | Work on Independent Project | 3h     |
+|   9  | Finish Independent Project  | 3h     |
