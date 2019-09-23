@@ -28,14 +28,14 @@ I intend to do the "Data Analysis with Python" project.
 - Perspective Employers - this project will be one of many in my portfolio
 
 ### Timelines
-| Week |         Objective(s)        |  Time  |
-|:----:|:---------------------------:|:------:|
-|   1  | Importing Datasets          | 2h 15m |
-|   2  | Data Wrangling              | 2h 18m |
-|   3  | Exploratory Data Analysis   | 2h 18m |
-|   4  | Model Development           | 2h 27m |
-|   5  | Model Evaluation            | 2h 23m |
-|   6  | Final Assignment (1)        | 2h 10m |
-|   7  | Final Assignment (2)        | 2h 5m  |
-|   8  | Work on Independent Project | 3h     |
-|   9  | Finish Independent Project  | 3h     |
+| Week |         Objective(s)        |  Time  | Done? |
+|:----:|:---------------------------:|:------:|:-----:|
+|   1  | Importing Datasets          | 2h 15m |   ✓   |
+|   2  | Data Wrangling              | 2h 18m |   ✓   |
+|   3  | Exploratory Data Analysis   | 2h 18m |   ✓   |
+|   4  | Model Development           | 2h 27m |       |
+|   5  | Model Evaluation            | 2h 23m |       |
+|   6  | Final Assignment (1)        | 2h 10m |       |
+|   7  | Final Assignment (2)        | 2h 5m  |       |
+|   8  | Work on Independent Project | 3h     |       |
+|   9  | Finish Independent Project  | 3h     |       |
