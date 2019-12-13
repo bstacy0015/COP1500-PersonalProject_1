@@ -84,9 +84,16 @@ df.drop(df[df.Start < 1565582400].index, inplace=True)  # Omits all rows
 # with a date before August 12th, 2019
 
 
-# Data Analysis:
+# Data visualization of walking speed over time:
 
-x = df["Start"]
-y = df["MeanSpeed"]
-graph = sns.regplot(x,y,data=df)
+# Let's create a different version of the dataframe that will instead track
+# the start column as the amount of days since August 12th, 2019.
+df_day = df  # Initialize new variable
+df_day["Start"] -= 1564632000  # Subtract the amount of time since August
+# 1st (the intended start of my domain).
+df_day["Start"] /= 86400  # Turns the units from seconds to days.
+
+x = df_day["Start"]
+y = df_day["MeanSpeed"]
+graph = sns.regplot(x, y, data=df_day)
 plt.show()
