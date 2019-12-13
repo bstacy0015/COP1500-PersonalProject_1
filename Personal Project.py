@@ -5,12 +5,15 @@ https://chrisalbon.com/python/data_wrangling/pandas_dropping_column_and_rows/
 Source 2 (used in dropping rows with a conditional operator):
 https://stackoverflow.com/questions/13851535/delete-rows-from-a-pandas-dataframe-based-on-a-conditional-expression-involving
 
+Source 3 (used for converting 1D arrays to 2D arrays):
+https://stackoverflow.com/questions/51150153/valueerror-expected-2d-array-got-1d-array-instead
 The purpose of this program is to visualize my average walking speed over
-time and to determine how my walking speed changes depending on the time of
-day.
+time.
+_author_ = Benton Stacy
 """
 import pandas as pd
-import numpy as np
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -95,7 +98,23 @@ df_day["Start"] /= 86400  # Turns the units from seconds to days.
 
 x = df_day["Start"]
 y = df_day["MeanSpeed"]
-graph = sns.regplot(x, y, ci=None, data=df_day, marker="+", label="Hi")
-plt.xlabel("Days since August 1st, 2019")
-plt.ylabel("Average walking speed")
-plt.show()
+graph = sns.regplot(x, y, ci=None, data=df_day, marker="+")  # Creates the
+# graph.
+plt.xlabel("Days since August 1st, 2019")  # X-axis label
+plt.ylabel("Average walking speed (mph)")  # Y-axis label
+plt.title("My Average Walking Speed While In College")  # Figure title
+plt.xlim(0, 140)
+plt.show()  # Prints the graph
+
+# Splitting the data into training and test sets:
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2,
+                                                    random_state=0)
+x_train = x_train.values.reshape(-1, 1)  # Read Source 3
+x_test = x_test.values.reshape(-1, 1)
+y_train = y_train.values.reshape(-1, 1)
+
+lm = LinearRegression()  # Constructs object for LinearRegression()
+reg = lm.fit(x_train, y_train)  # Conducts analysis of best fit line
+m = str(reg.coef_)[2:-2]  # Eliminates [[brackets]] from slope calc
+b = str(reg.intercept_)[1:-1]  # Eliminates [brackets] from y-int calc
+print("y = ", m, "x + ", b, sep="")  # Prints equation of best fit line
