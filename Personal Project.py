@@ -1,6 +1,9 @@
 """
 Source 1 (used in dropping specific rows):
 https://chrisalbon.com/python/data_wrangling/pandas_dropping_column_and_rows/
+
+Source 2 (used in dropping rows with a conditional operator):
+https://stackoverflow.com/questions/13851535/delete-rows-from-a-pandas-dataframe-based-on-a-conditional-expression-involving
 """
 import pandas as pd
 import numpy as np
@@ -25,6 +28,18 @@ df.dropna(subset=["Calories"], axis=0, inplace=True)  # Removes data entries
 # which don't have a Calories entry.
 
 # Format all relevant data so proper analysis can be made:
+df["Start"] = df["Start"].astype("float")  # Ensures that all Start entries are
+# float values.
+df["Start"] /= 1000  # Change UNIX Epoch time (with ms) to UNIX Epoch time
+
+df["End"] = df["End"].astype("float")  # Ensures that all End entries are
+# float values.
+df["End"] /= 1000  # Change UNIX Epoch time (with ms) to UNIX Epoch time
+
+df["Duration"] = df["Duration"].astype("float")  # Ensures that all Duration
+# entries are float values.
+df["Duration"] /= 1000  # Change UNIX Epoch time (with ms) to UNIX Epoch time
+
 df["MeanSpeed"] = df["MeanSpeed"].astype("float")  # Ensures that all
 # MeanSpeed entries are float values.
 df["MeanSpeed"] *= 2.23694  # Converts MeanSpeed from meters per second to
@@ -42,11 +57,22 @@ df["Distance"] /= 1609.344  # Converts Distance from meters to miles
 df["Calories"] = df["Calories"].astype("float")  # Ensures that all
 # Calories entries are float values.
 
-df["Start"] /= 1000  # Change UNIX Epoch time (with ms) to UNIX Epoch time
-df["End"] /= 1000  # Change UNIX Epoch time (with ms) to UNIX Epoch time
-
 # Only include walking data so I can do an analysis on only walking data:
 df = df[df.ExerciseType == 1001]  # In my imported data, walking is
 # ExerciseType "1001"
+df.drop(labels=["ExerciseType"], axis=1, inplace=True)  # Remove
+# ExerciseType column, now that all val's are the same
 
+# Omit data with an abnormally fast MaxSpeed:
+df.drop(df[df.MaxSpeed > 7].index, inplace=True)  # Omits all rows with
+# MaxSpeed > 7 (mph)
+
+# Omit data with an abnorally low Distance:
+df.drop(df[df.Distance < 0.3].index, inplace=True)  # Omits all rows with
+# Ditance < 0.3 (miles)
+
+
+# Data Analysis:
+
+print(df.describe())
 print(df.head(50))
