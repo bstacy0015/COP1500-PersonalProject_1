@@ -4,6 +4,10 @@ https://chrisalbon.com/python/data_wrangling/pandas_dropping_column_and_rows/
 
 Source 2 (used in dropping rows with a conditional operator):
 https://stackoverflow.com/questions/13851535/delete-rows-from-a-pandas-dataframe-based-on-a-conditional-expression-involving
+
+The purpose of this program is to visualize my average walking speed over
+time and to determine how my walking speed changes depending on the time of
+day.
 """
 import pandas as pd
 import numpy as np
@@ -63,6 +67,10 @@ df = df[df.ExerciseType == 1001]  # In my imported data, walking is
 df.drop(labels=["ExerciseType"], axis=1, inplace=True)  # Remove
 # ExerciseType column, now that all val's are the same
 
+# Omit data with an abnormally slow MeanSpeed:
+df.drop(df[df.MeanSpeed < 3].index, inplace=True)  # Omits all rows with
+# MeanSpeed < 3 (mph)
+
 # Omit data with an abnormally fast MaxSpeed:
 df.drop(df[df.MaxSpeed > 7].index, inplace=True)  # Omits all rows with
 # MaxSpeed > 7 (mph)
@@ -71,8 +79,14 @@ df.drop(df[df.MaxSpeed > 7].index, inplace=True)  # Omits all rows with
 df.drop(df[df.Distance < 0.3].index, inplace=True)  # Omits all rows with
 # Ditance < 0.3 (miles)
 
+# Omit data before the beginning of my time at college:
+df.drop(df[df.Start < 1565582400].index, inplace=True)  # Omits all rows
+# with a date before August 12th, 2019
+
 
 # Data Analysis:
 
-print(df.describe())
-print(df.head(50))
+x = df["Start"]
+y = df["MeanSpeed"]
+graph = sns.regplot(x,y,data=df)
+plt.show()
