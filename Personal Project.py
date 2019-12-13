@@ -95,5 +95,7 @@ df_day["Start"] /= 86400  # Turns the units from seconds to days.
 
 x = df_day["Start"]
 y = df_day["MeanSpeed"]
-graph = sns.regplot(x, y, data=df_day)
+graph = sns.regplot(x, y, ci=None, data=df_day, marker="+", label="Hi")
+plt.xlabel("Days since August 1st, 2019")
+plt.ylabel("Average walking speed")
 plt.show()
